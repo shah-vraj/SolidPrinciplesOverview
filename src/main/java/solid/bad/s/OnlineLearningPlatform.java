@@ -8,6 +8,11 @@ import java.time.LocalDateTime;
 import java.time.Month;
 import java.util.Map;
 
+/**
+ * Sample main java class to showcase dummy usage of all classes.
+ * Note: Real world implementation/usage for these classes vary according to requirement,
+ * this is just an example to make sure code is compiled successfully and ready to run.
+ */
 public class OnlineLearningPlatform {
 
     private static final Map<Integer, String> teachers = Map.ofEntries(
@@ -56,8 +61,8 @@ public class OnlineLearningPlatform {
         System.out.println();
 
         // Sharing and retrieving resources
-        room.shareResources(1, new File("SOLID.pdf"));
-        room.shareResources(1, new File("CI-CD.pdf"));
+        room.addResource(1, new File("SOLID.pdf"));
+        room.addResource(1, new File("CI-CD.pdf"));
         System.out.println("All resources shared in the room:");
         room.getResources().forEach(resource -> System.out.println("File: " + resource.getName()));
         System.out.println();

@@ -45,6 +45,7 @@ public class Room {
             return;
         }
         teachers.put(id, name);
+        onlineMeeting.admitUser(name, id);
     }
 
     /**
@@ -58,6 +59,7 @@ public class Room {
             return;
         }
         students.put(id, name);
+        onlineMeeting.admitUser(name, id);
     }
 
     /**
@@ -113,7 +115,7 @@ public class Room {
     }
 
     /**
-     * Schedule a test in a room
+     * Schedule a test in this room
      * @param teacherId ID of the teacher
      * @param testName Name of the test
      * @param localDateTime Date and time of the test
@@ -169,11 +171,11 @@ public class Room {
     }
 
     /**
-     * Share resources in the class
+     * Add a resource in the class
      * @param teacherId ID of the teacher
      * @param resource Resource to share which can be an image/video/document
      */
-    public void shareResources(int teacherId, File resource) {
+    public void addResource(int teacherId, File resource) {
         if (!teachers.containsKey(teacherId)) {
             System.out.println("Teacher " + teacherId + " not found");
             return;
@@ -209,6 +211,7 @@ public class Room {
             return;
         }
         teachers.remove(id);
+        onlineMeeting.removeUser(name, id);
     }
 
     /**
@@ -221,8 +224,12 @@ public class Room {
             return;
         }
         students.remove(id);
+        onlineMeeting.removeUser(name, id);
     }
 
+    /**
+     * Removes all the users from the room
+     */
     private void removeAllUsers() {
         HashSet<Integer> teachers = new HashSet<>(this.teachers.keySet());
         teachers.forEach(this::removeTeacher);

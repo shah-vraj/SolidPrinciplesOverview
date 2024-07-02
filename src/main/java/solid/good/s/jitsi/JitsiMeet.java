@@ -1,6 +1,6 @@
-package solid.bad.s.jitsi;
+package solid.good.s.jitsi;
 
-import solid.bad.s.OnlineMeeting;
+import solid.good.s.OnlineMeeting;
 
 public class JitsiMeet implements OnlineMeeting {
 

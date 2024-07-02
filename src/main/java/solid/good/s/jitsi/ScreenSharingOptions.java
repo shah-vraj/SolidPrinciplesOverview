@@ -1,4 +1,4 @@
-package solid.bad.s.jitsi;
+package solid.good.s.jitsi;
 
 /**
  * Screen sharing options while in a meeting

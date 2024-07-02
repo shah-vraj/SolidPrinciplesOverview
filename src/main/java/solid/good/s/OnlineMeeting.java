@@ -1,6 +1,6 @@
-package solid.bad.s;
+package solid.good.s;
 
-import solid.bad.s.jitsi.ScreenSharingOptions;
+import solid.good.s.jitsi.ScreenSharingOptions;
 
 public interface OnlineMeeting {
 
