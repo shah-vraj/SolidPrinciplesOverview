@@ -19,7 +19,7 @@ of the SOLID principles and fixing those violations.
 | Having if-else if ladder to check type of events and then handling event in main class | Create separate interface for event which provides all necessary operations a event has to perform and use same interface as input to main class |
 
 ### Liskov Substitution Principle
-**Baking application**
+**Banking application**
 
 | Bad approach                                                                                                         | Good approach                                                                                                     |
 |:---------------------------------------------------------------------------------------------------------------------|:------------------------------------------------------------------------------------------------------------------|
