@@ -1,10 +1,11 @@
-package solid.bad.o;
+package solid.good.o;
+
+import solid.good.o.event_type.EventType;
 
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
-import java.util.concurrent.atomic.AtomicReference;
 
 public class EventManager {
 
@@ -20,11 +21,7 @@ public class EventManager {
      * @param end End date and time of the event
      * @param location Location of the event
      */
-    public void addEvent(String eventType, String eventName, LocalDateTime start, LocalDateTime end, String location) {
-        // Check if event type is valid or not
-        if (!eventValidator.validateEventType(eventType)) {
-            return;
-        }
+    public void addEvent(EventType eventType, String eventName, LocalDateTime start, LocalDateTime end, String location) {
         Event event = new Event(events.size() + 1, eventName, eventType, start, end, location);
         // Check if event start time and end time is valid or note
         if (!eventValidator.validateEventStartAndEndTime(event)) {
@@ -64,20 +61,12 @@ public class EventManager {
         if (eventValidator.isEventIdNotAdded(eventId, events)) {
             return;
         }
-        String eventType = getEventType(eventId);
-        // Check if event type is valid or not
-        if (eventType == null) {
-            System.out.println("Cannot get event type for event with id " + eventId + " not found");
+        Optional<Event> event = events.stream().filter(e -> e.id() == eventId).findFirst();
+        if (event.isEmpty()) {
+            System.out.println("Event not found with id: " + eventId);
             return;
         }
-        switch (eventType) {
-            case "GamesNight" -> setupGamesNightEvent();
-            case "MondayNightMeal" -> setupMondayNightMealEvent();
-            case "MovieNight" -> setupMovieNightEvent();
-            case "SnowballFight" -> setupSnowballFightEvent();
-            case "CanadaDayFireworks" -> setupCanadaDayFireworksEvent();
-            default -> System.out.println("Invalid event type to start");
-        }
+        event.get().type().setupEventEnvironment();
         removeEvent(eventId);
     }
 
@@ -93,7 +82,7 @@ public class EventManager {
         for (Event event : events) {
             System.out.println("Event id: " + event.id());
             System.out.println("name: " + event.name());
-            System.out.println("EventType: " + event.type());
+            System.out.println("EventType: " + event.type().getClass().getSimpleName());
             System.out.println("Start date and time: " + event.startDateAndTime());
             System.out.println("End date and time: " + event.endDateAndTime());
             System.out.println("Location: " + event.location());
@@ -117,7 +106,6 @@ public class EventManager {
     // End region
 
     // Region: Private methods
-
     /**
      * Remove an event through Event object
      * @param event Event object to remove
@@ -129,55 +117,6 @@ public class EventManager {
         }
         events.remove(event);
         System.out.println("Event removed/completed: \"" + event.name() + "\"");
-    }
-
-    /**
-     * Provides the type of the event from its ID
-     * @param eventId ID of the event
-     * @return String representing type of the event
-     */
-    private String getEventType(int eventId) {
-        AtomicReference<String> eventType = new AtomicReference<>();
-        events.stream()
-                .filter(event -> event.id() == eventId)
-                .findFirst()
-                .ifPresent(event -> eventType.set(event.type()));
-        return eventType.get();
-    }
-
-    /**
-     * Setup event of type - GamesNight
-     */
-    private void setupGamesNightEvent() {
-        System.out.println("Setting up environment for the event GamingEvent");
-    }
-
-    /**
-     * Setup event of type - MondayNightMeal
-     */
-    private void setupMondayNightMealEvent() {
-        System.out.println("Setting up environment for the event MondayNightMeal");
-    }
-
-    /**
-     * Setup event of type - MovieNight
-     */
-    private void setupMovieNightEvent() {
-        System.out.println("Setting up environment for the event MovieNight");
-    }
-
-    /**
-     * Setup event of type - SnowballFight
-     */
-    private void setupSnowballFightEvent() {
-        System.out.println("Setting up environment for the event SnowballFight");
-    }
-
-    /**
-     * Setup event of type - CanadaDayFireworks
-     */
-    private void setupCanadaDayFireworksEvent() {
-        System.out.println("Setting up environment for the event CanadaDayFireworks");
     }
     // End region
 }
