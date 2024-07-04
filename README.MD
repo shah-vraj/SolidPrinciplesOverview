@@ -19,11 +19,11 @@ of the SOLID principles and fixing those violations.
 | Having switch to check type of events and then handling event in main class | Create separate interface for event which provides all necessary operations a event has to perform and use same interface as input to main class |
 
 ### Liskov Substitution Principle
-**Banking application**
+**User Profile Management**
 
-| Bad approach                                                                                                         | Good approach                                                                                                     |
-|:---------------------------------------------------------------------------------------------------------------------|:------------------------------------------------------------------------------------------------------------------|
-| User tries to withdraw from an account of type FixedDeposit and failing to withdraw as it is prohibited to withdraw. | There should be a separate interface for defining functionalities for a normal account and a withdrawable account |
+| Bad approach                                                                                                                                                                   | Good approach                                                                                                                                                            |
+|:-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|:-------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| User tries to upload image via AmazonImageUploader and FirebaseImageUploader classes and expects a URL in return but amazon provides nothing and firebase provides string url. | There should be a separate interface as UrlResponseImageUploader extended by all image uploader classes which will be then fed to function/class where image is uploaded |
 
 ### Interface Segregation Principle
 **Chat application**
