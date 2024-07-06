@@ -28,9 +28,9 @@ of the SOLID principles and fixing those violations.
 ### Interface Segregation Principle
 **Chat application**
 
-| Bad approach                                                                                                                                                                      | Good approach                                                                                                                            |
-|:----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|:-----------------------------------------------------------------------------------------------------------------------------------------|
-| Creating a single interface message which includes all the information about the message, such as id, text, isEdited, isReplied, etc. Basically every single detail of a message. | Create separate interfaces for different types of message. For example have a separate interface for EditedMessage, RepliedMessage, etc. |
+| Bad approach                                                                                                                                                                                 | Good approach                                                                                                                                      |
+|:---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|:---------------------------------------------------------------------------------------------------------------------------------------------------|
+| Creating a single interface message which includes all the information about the message, such as id, message, editMessage, repliedMessage, etc. Basically every single detail of a message. | Create separate interfaces for different types of message. For example have a separate interface for Edited, Replied, etc. and extend as per need. |
 
 ### Dependency Inversion Principle
 **Social media application**
