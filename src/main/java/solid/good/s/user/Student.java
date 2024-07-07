@@ -7,11 +7,8 @@ import java.util.List;
 
 public class Student extends User {
 
-    private final String name;
-
     public Student(int userId, String name) {
-        super(userId);
-        this.name = name;
+        super(userId, name);
     }
 
     /**

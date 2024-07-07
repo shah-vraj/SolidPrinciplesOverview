@@ -12,20 +12,10 @@ public class Teacher extends User {
 
     public record OnlineTest(String name, LocalDateTime dateTime) { }
 
-    private final String name;
     private final ArrayList<OnlineTest> tests = new ArrayList<>();
 
     public Teacher(int id, String name) {
-        super(id);
-        this.name = name;
-    }
-
-    /**
-     * Provides the name of the teacher
-     * @return String representing name of the teacher
-     */
-    public String getName() {
-        return name;
+        super(id, name);
     }
 
     /**
@@ -40,7 +30,7 @@ public class Teacher extends User {
             return;
         }
         tests.add(onlineTest);
-        System.out.println("Test \"" + onlineTest.name + "\" scheduled at: " + onlineTest.dateTime + " by \"" + name + "\"");
+        System.out.println("Test \"" + onlineTest.name + "\" scheduled at: " + onlineTest.dateTime + " by \"" + userName + "\"");
     }
 
     /**

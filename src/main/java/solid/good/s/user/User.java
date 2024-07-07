@@ -6,9 +6,19 @@ import solid.good.s.jitsi.ScreenSharingOptions;
 public abstract class User {
 
     protected int userId;
+    protected String userName;
 
-    public User(int userId) {
+    public User(int userId, String userName) {
         this.userId = userId;
+        this.userName = userName;
+    }
+
+    /**
+     * Provides the name of the user
+     * @return String representing name of the user
+     */
+    public String getName() {
+        return userName;
     }
 
     /**
