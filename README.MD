@@ -14,9 +14,9 @@ of the SOLID principles and fixing those violations.
 ### Open-Closed Principle
 **Event management System**
 
-| Bad approach                                                                | Good approach                                                                                                                                    |
-|:----------------------------------------------------------------------------|:-------------------------------------------------------------------------------------------------------------------------------------------------|
-| Having switch to check type of events and then handling event in main class | Create separate interface for event which provides all necessary operations a event has to perform and use same interface as input to main class |
+| Bad approach                                                                | Good approach                                                                                                 |
+|:----------------------------------------------------------------------------|:--------------------------------------------------------------------------------------------------------------|
+| Having switch to check type of events and then handling event in main class | Create separate interface for event type which provides all necessary operations an event type has to perform |
 
 ### Liskov Substitution Principle
 **User Profile Management**

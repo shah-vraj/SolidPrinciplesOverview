@@ -30,29 +30,35 @@ public class UserProfileManagement {
         System.out.println();
 
         // Image uploader
+
         // Amazon
         System.out.println("Uploading image to amazon which doesn't provide URL in return");
-        manager.setImageUploader(new AmazonImageUploader(BASE_URL, API_KEY));
-        manager.setProfileImage(new File("AmazonUploadedImage.jpg"));
+        AmazonImageUploader amazonImageUploader = new AmazonImageUploader(BASE_URL, API_KEY);
+        amazonImageUploader.setupConfiguration();
+        manager.setProfileImage(new File("AmazonUploadedImage.jpg"), amazonImageUploader);
         File amazonUploadedProfileImage = manager.getProfileImage();
         System.out.println("Retrieved profile image url: " + (amazonUploadedProfileImage != null ? amazonUploadedProfileImage.getName() : null));
         System.out.println();
+
         // Firebase
         System.out.println("Uploading image to firebase which does provide URL in return");
-        manager.setImageUploader(new FirebaseImageUploader(BASE_URL, API_KEY));
-        manager.setProfileImage(new File("FirebaseUploadedImage.jpg"));
+        FirebaseImageUploader firebaseImageUploader = new FirebaseImageUploader(BASE_URL, API_KEY);
+        firebaseImageUploader.setupConfiguration();
+        manager.setProfileImage(new File("FirebaseUploadedImage.jpg"), firebaseImageUploader);
         File firebaseUploadedProfileImage = manager.getProfileImage();
         System.out.println("Retrieved profile image url: " + (firebaseUploadedProfileImage != null ? firebaseUploadedProfileImage.getName() : null));
         System.out.println();
+
         // Google
         System.out.println("Uploading image to google which also provides URL in return");
-        manager.setImageUploader(new GoogleImageUploader(BASE_URL, API_KEY));
-        manager.setProfileImage(new File("GoogleUploadedImage.jpg"));
+        GoogleImageUploader googleImageUploader = new GoogleImageUploader(BASE_URL, API_KEY);
+        googleImageUploader.setupConfiguration();
+        manager.setProfileImage(new File("GoogleUploadedImage.jpg"), googleImageUploader);
         File googleUploadedProfileImage = manager.getProfileImage();
         System.out.println("Retrieved profile image url: " + (googleUploadedProfileImage != null ? googleUploadedProfileImage.getName() : null));
         System.out.println();
 
         // Cover image
-        manager.setCoverImage(new File("CoverImageWhichDoesntRequireUrl.jpg"));
+        manager.setCoverImage(new File("CoverImageWhichDoesntRequireUrl.jpg"), amazonImageUploader);
     }
 }

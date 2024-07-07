@@ -4,6 +4,7 @@ import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
 
+@SuppressWarnings("UnusedReturnValue")
 public class UserProfileManager {
 
     private final int id;
@@ -11,7 +12,6 @@ public class UserProfileManager {
     private String name;
     private String email;
     private String profileImageUrl;
-    private ImageUploader imageUploader;
 
     public UserProfileManager(int id) {
         this.id = id;
@@ -61,18 +61,14 @@ public class UserProfileManager {
         System.out.println("Hobby: " + hobby + " removed from hobbies for " + id);
     }
 
-    public void setImageUploader(ImageUploader imageUploader) {
-        this.imageUploader = imageUploader;
-        this.imageUploader.setupConfiguration();
-    }
-
-    public void setProfileImage(File profileImage) {
+    public String setProfileImage(File profileImage, ImageUploader imageUploader) {
         if (profileImage == null) {
             System.out.println("Profile image is null");
-            return;
+            return null;
         }
         // URL is expected in return
         profileImageUrl = imageUploader.uploadImage(profileImage);
+        return profileImageUrl;
     }
 
     public File getProfileImage() {
@@ -83,7 +79,7 @@ public class UserProfileManager {
         return downloadImage(profileImageUrl);
     }
 
-    public void setCoverImage(File coverImage) {
+    public void setCoverImage(File coverImage, ImageUploader imageUploader) {
         if (coverImage == null) {
             System.out.println("Cover image is null");
             return;
