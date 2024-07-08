@@ -17,24 +17,44 @@ public class UserProfileManager {
         this.id = id;
     }
 
+    /**
+     * Provides name of the user
+     * @return String representing name of the user
+     */
     public String getName() {
         return name;
     }
 
+    /**
+     * Sets the name of the user
+     * @param name Name of the user
+     */
     public void setName(String name) {
         this.name = name;
         System.out.println("Setting name to " + name + " for " + id);
     }
 
+    /**
+     * Provides email of the user
+     * @return String representing email of the user
+     */
     public String getEmail() {
         return email;
     }
 
+    /**
+     * Sets the email of the user
+     * @param email Email of the user
+     */
     public void setEmail(String email) {
         this.email = email;
         System.out.println("Setting email to " + email + " for " + id);
     }
 
+    /**
+     * Adds a hobby
+     * @param hobby String representing hobby
+     */
     public void addHobby(String hobby) {
         if (hobbies.contains(hobby)) {
             System.out.println("Hobby (" + hobby + ") already exist");
@@ -48,6 +68,10 @@ public class UserProfileManager {
         System.out.println("Hobby: " + hobby + " added to hobbies for " + id);
     }
 
+    /**
+     * Remove a hobby
+     * @param hobby String representing hobby
+     */
     public void removeHobby(String hobby) {
         if (!hobbies.contains(hobby)) {
             System.out.println("Hobby (" + hobby + ") does not exist");
@@ -61,6 +85,12 @@ public class UserProfileManager {
         System.out.println("Hobby: " + hobby + " removed from hobbies for " + id);
     }
 
+    /**
+     * Set profile image via provided image uploader
+     * @param profileImage Profile image to set
+     * @param imageUploader ImageUploader instance
+     * @return String representing URL of the uploaded image
+     */
     public String setProfileImage(File profileImage, ImageUploader imageUploader) {
         if (profileImage == null) {
             System.out.println("Profile image is null");
@@ -71,6 +101,10 @@ public class UserProfileManager {
         return profileImageUrl;
     }
 
+    /**
+     * Provides profile image of the user
+     * @return File object for the profile image
+     */
     public File getProfileImage() {
         if (profileImageUrl == null) {
             System.out.println("Profile image URL is null");
@@ -79,6 +113,11 @@ public class UserProfileManager {
         return downloadImage(profileImageUrl);
     }
 
+    /**
+     * sets the cover image of the user
+     * @param coverImage Image to set
+     * @param imageUploader ImageUploader instance
+     */
     public void setCoverImage(File coverImage, ImageUploader imageUploader) {
         if (coverImage == null) {
             System.out.println("Cover image is null");
@@ -88,6 +127,11 @@ public class UserProfileManager {
         imageUploader.uploadImage(coverImage);
     }
 
+    /**
+     * Downloads the image
+     * @param imageUrl URL of the image
+     * @return File representing downloaded image
+     */
     private File downloadImage(String imageUrl) {
         System.out.println("Downloading image from " + imageUrl);
         // Assume image downloaded

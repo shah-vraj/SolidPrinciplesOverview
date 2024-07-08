@@ -21,9 +21,9 @@ of the SOLID principles and fixing those violations.
 ### Liskov Substitution Principle
 **User Profile Management**
 
-| Bad approach                                                                                                                                                                   | Good approach                                                                                                                                                            |
-|:-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|:-------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| User tries to upload image via AmazonImageUploader and FirebaseImageUploader classes and expects a URL in return but amazon provides nothing and firebase provides string url. | There should be a separate interface as UrlResponseImageUploader extended by all image uploader classes which will be then fed to function/class where image is uploaded |
+| Bad approach                                                                                                                                                                   | Good approach                                                                                                                                                             |
+|:-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|:--------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| User tries to upload image via AmazonImageUploader and FirebaseImageUploader classes and expects a URL in return but amazon provides nothing and firebase provides string url. | There should be a separate interface as UrlProvidingImageUploader extended by all image uploader classes which will be then fed to function/class where image is uploaded |
 
 ### Interface Segregation Principle
 **Chat application**

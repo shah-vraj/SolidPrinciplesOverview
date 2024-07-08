@@ -14,6 +14,11 @@ public class UserProfileManagement {
         int userId = 1;
         UserProfileManager manager = new UserProfileManager(userId);
 
+        // Setup image uploader
+        amazonImageUploader.setupConfiguration();
+        firebaseImageUploader.setupConfiguration();
+        googleImageUploader.setupConfiguration();
+
         // Name
         manager.setName("Vraj Shah");
         System.out.println("Retrieved name from user id " + userId + ": " + manager.getName());
